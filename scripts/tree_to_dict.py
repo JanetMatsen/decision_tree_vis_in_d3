@@ -1,3 +1,4 @@
+import json
 import sklearn 
 
 # from http://planspace.org/20151129-see_sklearn_trees_with_d3/
@@ -28,3 +29,17 @@ def rules(clf, features, labels, node_index=0):
         node['children'] = [rules(clf, features, labels, right_index),
                             rules(clf, features, labels, left_index)]
     return node
+
+
+def save_tree_as_dict(clf, feature_names, label_names, save_path, node_index=0):
+    """
+    Wrapper for rules, that includes saving to a path and 
+    more descriptive argument names
+    """
+    tree_dict = rules(clf, feature_names, label_names, node_index)
+    # save the dict as a text file
+
+    with open(save_path, 'w') as f:
+        f.write(json.dumps(tree_dict))
+
+
