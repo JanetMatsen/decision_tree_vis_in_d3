@@ -1,4 +1,4 @@
-import scikitlearn 
+import sklearn 
 
 # from http://planspace.org/20151129-see_sklearn_trees_with_d3/
 
