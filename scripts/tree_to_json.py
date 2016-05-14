@@ -50,10 +50,13 @@ def export_json(decision_tree, out_file=None, feature_names=None):
 
 
     def node_to_str(tree, node_id):
-        node_repr = '"error": %.4f, "samples": %d, "value": %s' \
-                    % (tree.init_error[node_id],
-                       tree.n_samples[node_id],
-                       arr_to_py(tree.value[node_id]))
+        # node_repr = '"error": %.4f, "samples": %d, "value": %s' \
+        # # AttributeError: 'sklearn.tree._tree.Tree' object has no attribute 'init_error'
+        #             % (tree.init_error[node_id],
+        #                tree.n_samples[node_id],
+        #                arr_to_py(tree.value[node_id]))
+        node_repr = "fix me"   # 2016/5/14 Janet hack. 
+
         if tree.children_left[node_id] != _tree.TREE_LEAF:
             if feature_names is not None:
                 feature = feature_names[tree.feature[node_id]]
