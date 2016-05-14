@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+ENV_NAME=d3_dt
+
+# first remove the environment if it already exists
+# exit any virtualenv:
+source deactivate
+echo "before env $ENV_NAME removal:"
+conda info --envs
+
+conda remove --name $ENV_NAME --all
+echo "after env $ENV_NAME removal:"
+conda info --envs
+
+
+conda create -n $ENV_NAME --file requirements.txt
+echo "after env $ENV_NAME creation:"
+conda info --envs
+
+# enter new virtualenv
+source activate $ENV_NAME
