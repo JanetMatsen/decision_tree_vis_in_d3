@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ENV_NAME=d3_dt
+ENV_NAME=d3_tree
 
 # first remove the environment if it already exists
 # exit any virtualenv:
