@@ -46,7 +46,7 @@ def export_json(decision_tree, out_file=None, feature_names=None):
         wrapper = float
         if np.issubdtype(arr.dtype, np.int):
             wrapper = int
-        return map(wrapper, arr.tolist())
+        return list(map(wrapper, arr.tolist()))
 
 
     def node_to_str(tree, node_id):
@@ -92,7 +92,7 @@ def export_json(decision_tree, out_file=None, feature_names=None):
 
     if out_file is None:
         out_file = open("tree.json", "w")
-    elif isinstance(out_file, basestring):
+    elif isinstance(out_file, str):
         out_file = open(out_file, "w")
 
     if isinstance(decision_tree, _tree.Tree):
